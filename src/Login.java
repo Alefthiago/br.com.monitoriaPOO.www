@@ -20,7 +20,6 @@ public class Login extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtCpf;
 	private JPasswordField txtPass;
-
 	/**
 	 * Launch the application.
 	 */
@@ -63,6 +62,7 @@ public class Login extends JFrame {
 		btnLogin.setBounds(271, 203, 89, 23);
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		contentPane.add(btnLogin);

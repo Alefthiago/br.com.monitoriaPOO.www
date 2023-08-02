@@ -111,7 +111,7 @@ public class Registration extends JFrame {
 				String cpf = txtCpf.getText();
 				char[] pass = txtPass.getPassword();
 				String passString = (new String(pass));
-				if(!name.isEmpty() && !cpf.isEmpty() && !passString.isEmpty()) {
+				if (!name.isEmpty() && !cpf.isEmpty() && !passString.isEmpty()) {
 					try {
 						MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
 						byte messageDigest[] = algorithm.digest(passString.getBytes("UTF-8"));
@@ -123,11 +123,16 @@ public class Registration extends JFrame {
 						BankClient newClient = new BankClient(cpf, name, hashPass);
 						BankClientDAO bankClientDAO = new BankClientDAOImpl(new ConnDB());
 						bankClientDAO.insertBankClient(newClient);
+						Login loginFrame = new Login();
+						loginFrame.setVisible(true);
+						dispose();
+
 					} catch (NoSuchAlgorithmException | UnsupportedEncodingException e1) {
 						JOptionPane.showMessageDialog(null, e1.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-					}					
+					}
 				} else {
-					JOptionPane.showMessageDialog(null, "Todos os campos devem ser preenchidos!", "Erro", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Todos os campos devem ser preenchidos!", "Erro",
+							JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
