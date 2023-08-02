@@ -6,7 +6,7 @@ public interface BankClientDAO {
     BankClient getBankClientByCpf(String clientCpf);
     List<BankClient> getBankClientAll();
     List<String> getClientAllCpf();
-    void insertBankClient(BankClient bankClient);
+    Boolean insertBankClient(BankClient bankClient);
     void updateBankClient(BankClient bankClient);
     void deleteBankClient(BankClient bankClient);
 }

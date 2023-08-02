@@ -1,4 +1,3 @@
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,18 +27,18 @@ public class ListClients extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtSearch;
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ListClients frame = new ListClients();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					ListClients frame = new ListClients();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	public ListClients() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -153,7 +152,7 @@ public class ListClients extends JFrame {
 
 		setResizable(false);
 		setLocationRelativeTo(null);
-	
+
 		list.addListSelectionListener(e -> {
 			if (!e.getValueIsAdjusting()) { // Verifica se é uma seleção real, não uma mudança temporária
 				int i = list.getSelectedIndex();

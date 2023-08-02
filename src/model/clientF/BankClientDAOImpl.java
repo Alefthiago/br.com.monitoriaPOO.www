@@ -86,7 +86,7 @@ public class BankClientDAOImpl implements BankClientDAO {
 
 	}
 
-	public void insertBankClient(BankClient bankClient) {
+	public Boolean insertBankClient(BankClient bankClient) {
 		String sql = "INSERT INTO bank_client (BC_cpf, BC_name, BC_pass) VALUES (?, ?, ?)";
 		PreparedStatement stmt = null;
 		BankClient checkData = getBankClientByCpf(bankClient.getCpf());
@@ -97,8 +97,10 @@ public class BankClientDAOImpl implements BankClientDAO {
 				stmt.setString(2, bankClient.getName());
 				stmt.setString(3, bankClient.getPass());
 				stmt.executeUpdate();
+				return true;
 			} else {
 				JOptionPane.showMessageDialog(null, "Cpf invalido!", "Erro", JOptionPane.ERROR_MESSAGE);
+				return false;
 			}
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
@@ -112,7 +114,7 @@ public class BankClientDAOImpl implements BankClientDAO {
 			}
 			this.conn.closeConnection();
 		}
-
+		return false;
 	}
 
 	public List<String> getClientAllCpf() {

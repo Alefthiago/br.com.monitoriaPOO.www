@@ -1,4 +1,3 @@
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,25 +30,26 @@ public class Registration extends JFrame {
 	private JTextField txtCpf;
 	private JPasswordField txtPass;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Registration frame = new Registration();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
+//
+//	/**
+//	 * Launch the application.
+//	 */
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					Registration frame = new Registration();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
+//
+//	/**
+//	 * Create the frame.
+//	 */
 	public Registration() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 621, 452);
@@ -122,11 +122,12 @@ public class Registration extends JFrame {
 						String hashPass = hexString.toString();
 						BankClient newClient = new BankClient(cpf, name, hashPass);
 						BankClientDAO bankClientDAO = new BankClientDAOImpl(new ConnDB());
-						bankClientDAO.insertBankClient(newClient);
-						Login loginFrame = new Login();
-						loginFrame.setVisible(true);
-						dispose();
 
+						if (bankClientDAO.insertBankClient(newClient)) {
+							Home homeFrame = new Home(newClient);
+							homeFrame.setVisible(true);
+							dispose();
+						}
 					} catch (NoSuchAlgorithmException | UnsupportedEncodingException e1) {
 						JOptionPane.showMessageDialog(null, e1.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
 					}

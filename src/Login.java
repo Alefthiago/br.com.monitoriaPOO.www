@@ -20,6 +20,7 @@ public class Login extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtCpf;
 	private JPasswordField txtPass;
+
 	/**
 	 * Launch the application.
 	 */
@@ -44,39 +45,38 @@ public class Login extends JFrame {
 		setBounds(100, 100, 621, 452);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblNewLabel = new JLabel("Bem vindo!");
 		lblNewLabel.setBounds(251, 35, 156, 29);
 		lblNewLabel.setFont(new Font("Arial Black", Font.PLAIN, 20));
 		contentPane.add(lblNewLabel);
-		
+
 		txtCpf = new JTextField();
 		txtCpf.setBounds(256, 104, 119, 20);
 		contentPane.add(txtCpf);
 		txtCpf.setColumns(10);
-		
+
 		JButton btnLogin = new JButton("Entrar");
 		btnLogin.setBounds(271, 203, 89, 23);
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 			}
 		});
 		contentPane.add(btnLogin);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("CPF :");
 		lblNewLabel_1.setBounds(200, 105, 46, 14);
 		lblNewLabel_1.setFont(new Font("Arial Black", Font.PLAIN, 15));
 		contentPane.add(lblNewLabel_1);
-		
+
 		JLabel lblNewLabel_1_1 = new JLabel("Senha :");
 		lblNewLabel_1_1.setBounds(185, 154, 61, 14);
 		lblNewLabel_1_1.setFont(new Font("Arial Black", Font.PLAIN, 15));
 		contentPane.add(lblNewLabel_1_1);
-		
+
 		JButton btnListClients = new JButton("Entrar");
 		btnListClients.setBounds(20, 379, 89, 23);
 		btnListClients.addActionListener(new ActionListener() {
@@ -87,12 +87,12 @@ public class Login extends JFrame {
 			}
 		});
 		contentPane.add(btnListClients);
-		
+
 		JLabel lblNewLabel_1_2 = new JLabel("Consultar  CPF:");
 		lblNewLabel_1_2.setBounds(10, 339, 133, 29);
 		lblNewLabel_1_2.setFont(new Font("Arial Black", Font.PLAIN, 15));
 		contentPane.add(lblNewLabel_1_2);
-		
+
 		JButton btnRegistration = new JButton("Cadastro");
 		btnRegistration.setBounds(271, 244, 89, 23);
 		btnRegistration.addActionListener(new ActionListener() {
@@ -103,7 +103,7 @@ public class Login extends JFrame {
 			}
 		});
 		contentPane.add(btnRegistration);
-		
+
 		txtPass = new JPasswordField();
 		txtPass.setBounds(256, 153, 119, 20);
 		contentPane.add(txtPass);
