@@ -15,6 +15,12 @@ public class BankClient {
 	private String pass;
 	private List<BankAccount> accounts;
 
+	public BankClient(String cpf, String name) {
+		this.cpf = cpf;
+		this.name = name;
+		this.accounts = new ArrayList<BankAccount>();
+	}
+	
 	public BankClient(String cpf, String name, String pass) {
 		this.cpf = cpf;
 		this.name = name;

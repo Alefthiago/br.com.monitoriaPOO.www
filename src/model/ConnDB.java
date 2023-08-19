@@ -7,8 +7,8 @@ import java.sql.SQLException;
 public class ConnDB {
 
 	private final static String dbUser = "root";
-	private final static String dbPass = "root";
-	private final static String dbAddress = "localhost";
+	private final static String dbPass = "alunoifp3";
+	private final static String dbAddress = "monitoria-poo.cseihltacydd.us-east-2.rds.amazonaws.com";
 	private final static String dbPort = "3306";
 	private final static String dbDatabase = "monitoria_poo";
 

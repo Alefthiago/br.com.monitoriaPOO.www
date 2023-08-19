@@ -2,14 +2,23 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import model.ConnDB;
+import model.clientF.BankClient;
+import model.clientF.BankClientDAO;
+import model.clientF.BankClientDAOImpl;
 
 public class Login extends JFrame {
 
@@ -62,7 +71,35 @@ public class Login extends JFrame {
 		btnLogin.setBounds(271, 203, 89, 23);
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				String cpf = txtCpf.getText();
+				char [] pass = txtPass.getPassword();
+				String passString = (new String(pass));				
+				if (!cpf.isEmpty() && !passString.isEmpty()) {
+					MessageDigest algorithm;
+					try {
+						algorithm = MessageDigest.getInstance("SHA-256");
+						byte messageDigest[] = algorithm.digest(passString.getBytes("UTF-8"));
+						StringBuilder hexString = new StringBuilder();
+						for (byte b : messageDigest) {
+							hexString.append(String.format("%02X", 0xFF & b));
+						}
+						String hashPass = hexString.toString();
+						BankClientDAO loginClientDAO = new BankClientDAOImpl(new ConnDB());
+						BankClient newClient = loginClientDAO.checkDataClient(cpf, hashPass);
+						if (newClient == null) {
+							JOptionPane.showMessageDialog(null, "Usuário não encontrado!", "Erro", JOptionPane.ERROR_MESSAGE);
+						} else {
+							Home homeFrame = new Home(newClient);
+							homeFrame.setVisible(true);
+							dispose();
+						}
+					} catch (NoSuchAlgorithmException | UnsupportedEncodingException e1) {
+						JOptionPane.showMessageDialog(null, e1.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+					} 
+				} else {
+					JOptionPane.showMessageDialog(null, "Todos os campos devem ser preenchidos!", "Erro",
+							JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 		contentPane.add(btnLogin);

@@ -3,6 +3,7 @@ package model.clientF;
 import java.util.List;
 
 public interface BankClientDAO {
+	BankClient checkDataClient(String cpf, String pass);
     BankClient getBankClientByCpf(String clientCpf);
     List<BankClient> getBankClientAll();
     List<String> getClientAllCpf();
