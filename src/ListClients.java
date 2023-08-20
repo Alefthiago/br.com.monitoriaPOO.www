@@ -115,11 +115,6 @@ public class ListClients extends JFrame {
 		lblContaCorrente.setBounds(135, 171, 137, 29);
 		contentPane.add(lblContaCorrente);
 
-		JLabel lblClienteDesde = new JLabel("Cliente desde ");
-		lblClienteDesde.setFont(new Font("Arial Black", Font.PLAIN, 15));
-		lblClienteDesde.setBounds(154, 380, 120, 29);
-		contentPane.add(lblClienteDesde);
-
 		JLabel lblClientAccountC = new JLabel("");
 		lblClientAccountC.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblClientAccountC.setBounds(282, 176, 386, 21);
