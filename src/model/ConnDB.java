@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnDB {
-
+	// banco de dados local
 	private final static String dbUser = "root";
 	private final static String dbPass = "root";
 	private final static String dbAddress = "localhost";
