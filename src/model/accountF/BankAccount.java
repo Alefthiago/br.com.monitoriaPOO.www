@@ -21,6 +21,10 @@ public class BankAccount {
 		this.status = 1;
 	}
 
+	public void transaction (Float value, Integer numberAccount) {
+	
+	}
+	
 	@Override
 	public String toString() {
 		return "BankAccount [number=" + number + ", type=" + type + ", cpfOwner=" + cpfOwner + ", balance=" + balance + ", status=" + status + "]";
