@@ -63,7 +63,7 @@ public class Home extends JFrame {
 				System.out.println(Home.this.user);
 			}
 		});
-		btnCreateAccountS.setBounds(60, 252, 89, 23);
+		btnCreateAccountS.setBounds(60, 252, 120, 23);
 		contentPane.add(btnCreateAccountS);
 		
 		JLabel lblNewLabel_1 = new JLabel("Conta poupança:");
@@ -78,7 +78,7 @@ public class Home extends JFrame {
 				System.out.println(Home.this.user);
 			}
 		});
-		btnCreateAccountC.setBounds(380, 252, 89, 23);
+		btnCreateAccountC.setBounds(380, 252, 120, 23);
 		contentPane.add(btnCreateAccountC);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Conta corrente:");
