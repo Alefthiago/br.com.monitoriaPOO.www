@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 import java.util.Random;
 
-public class BankAccount {
+public abstract class BankAccount {
 
 	private Integer number;
 	private String type;
@@ -13,7 +13,6 @@ public class BankAccount {
 	private Integer status;
 
 	public BankAccount(String cpfOwner, String type) {
-
 		this.number = new Random().nextInt(999999999);
 		this.type = type;
 		this.cpfOwner = cpfOwner;
@@ -21,13 +20,12 @@ public class BankAccount {
 		this.status = 1;
 	}
 
-	public void transaction (Float value, Integer numberAccount) {
-	
-	}
-	
+	public abstract void transaction(BigDecimal value, BankAccount accountDestiny);
+
 	@Override
 	public String toString() {
-		return "BankAccount [number=" + number + ", type=" + type + ", cpfOwner=" + cpfOwner + ", balance=" + balance + ", status=" + status + "]";
+		return "BankAccount [number=" + number + ", type=" + type + ", cpfOwner=" + cpfOwner + ", balance=" + balance
+				+ ", status=" + status + "]";
 	}
 
 	public Integer getNumber() {
@@ -88,5 +86,4 @@ public class BankAccount {
 				&& Objects.equals(number, other.number) && Objects.equals(status, other.status)
 				&& Objects.equals(type, other.type);
 	}
-
 }

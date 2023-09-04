@@ -8,9 +8,9 @@ public class BankAccountS extends BankAccount {
 		super(cpfOwner, type);
 	}
 
-	public void transaction(BigDecimal value, BankAccount bankAccountDestiny) {
-
-		if (bankAccountDestiny.getStatus() == 1) {
+	@Override
+	public void transaction(BigDecimal value, BankAccount accountDestiny) {
+		if (accountDestiny.getStatus() == 1) {
 			if (this.getBalance().compareTo(BigDecimal.ZERO) > 0) {
 				if (this.getBalance().compareTo(value) >= 0) {
 					
@@ -23,5 +23,6 @@ public class BankAccountS extends BankAccount {
 		} else {
 
 		}
+
 	}
 }

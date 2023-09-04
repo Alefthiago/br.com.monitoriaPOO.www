@@ -2,7 +2,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import model.accountF.BankAccount;
+import model.accountF.BankAccountC;
+import model.accountF.BankAccountS;
 import model.clientF.BankClient;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -58,7 +59,7 @@ public class Home extends JFrame {
 		btnCreateAccountS.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Perguntar para o professor porque é repciso usar chamar o obejto "Home" neste caso.
-				BankAccount newAccountS = new BankAccount(Home.this.user.getCpf(), "poupança");
+				BankAccountS newAccountS = new BankAccountS(Home.this.user.getCpf(), "poupança");
 				Home.this.user.addAccount(newAccountS);
 				System.out.println(Home.this.user);
 			}
@@ -73,7 +74,7 @@ public class Home extends JFrame {
 		JButton btnCreateAccountC = new JButton("Criar conta");
 		btnCreateAccountC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BankAccount newAccountC = new BankAccount(Home.this.user.getCpf(), "corrente");
+				BankAccountC newAccountC = new BankAccountC(Home.this.user.getCpf(), "corrente");
 				Home.this.user.addAccount(newAccountC);
 				System.out.println(Home.this.user);
 			}

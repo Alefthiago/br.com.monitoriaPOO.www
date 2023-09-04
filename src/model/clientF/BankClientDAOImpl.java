@@ -20,11 +20,15 @@ public class BankClientDAOImpl implements BankClientDAO {
 
 	// executeQuery() retorna um objeto do tipo ResultSet com as informações
 	// relativas a consulta sql
+
 	// executeUpdate() retorna um int com a quantidade de linhas afetadas pela
-	// consulta
+	// consulta.
+
 	// execute() retorna um valor boolean TRUE caso a consulta retorne algo e FALSE
 	// se não retornar nada (o FALSE não indica falha, apenas que não houve
 	// resultados na consulta)
+
+	// Função para realizar login do usuário.
 	public BankClient checkDataClient(String cpf, String pass) {
 
 		String sql = "SELECT BC_name, BC_cpf, BC_pass FROM bank_client WHERE BC_cpf = ? AND BC_pass = ?";
@@ -34,9 +38,10 @@ public class BankClientDAOImpl implements BankClientDAO {
 			stmt = this.conn.getConnection().prepareStatement(sql);
 			stmt.setString(1, cpf);
 			stmt.setString(2, pass);
-			result = stmt.executeQuery();	
+			result = stmt.executeQuery();
 			if (result.next()) {
-				BankClient client = new BankClient(result.getString("BC_cpf"), result.getString("BC_name"), result.getString("BC_pass"));
+				BankClient client = new BankClient(result.getString("BC_cpf"), result.getString("BC_name"),
+						result.getString("BC_pass"));
 				return client;
 			} else {
 				return null;
@@ -154,7 +159,6 @@ public class BankClientDAOImpl implements BankClientDAO {
 			}
 			this.conn.closeConnection();
 		}
-		System.out.println("fiquei confuso");
 		return null;
 	}
 
