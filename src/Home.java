@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class Home extends JFrame {
-
+// Só o desabafo que a vida de programador vai ser dificil mas tamo ai
 	/**
 	 * 
 	 */
