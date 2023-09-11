@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class ConnDB {
 	// banco de dados local
 	private final static String dbUser = "root";
-	private final static String dbPass = "root";
+	private final static String dbPass = "";
 	private final static String dbAddress = "localhost";
 	private final static String dbPort = "3306";
 	private final static String dbDatabase = "monitoria_poo";

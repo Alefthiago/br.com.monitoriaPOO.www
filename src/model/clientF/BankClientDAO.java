@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface BankClientDAO {
 	BankClient checkDataClient(String cpf, String pass);
-    BankClient getBankClientByCpf(String clientCpf);
+	BankClient getBankClientByCpf(String clientCpf);
     List<BankClient> getBankClientAll();
     List<String> getClientAllCpf();
     Boolean insertBankClient(BankClient bankClient);

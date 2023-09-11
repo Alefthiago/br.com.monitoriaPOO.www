@@ -9,6 +9,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import model.ConnDB;
+import model.accountF.BankAccount;
 
 public class BankClientDAOImpl implements BankClientDAO {
 
