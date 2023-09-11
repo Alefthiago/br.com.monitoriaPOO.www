@@ -62,6 +62,7 @@ public class Registration extends JFrame {
 		JButton btnBack = new JButton("Voltar");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//		Botão para voltar a tela de login "Login.java".		//
 				Login loginFrame = new Login();
 				loginFrame.setVisible(true);
 				dispose();
@@ -107,12 +108,15 @@ public class Registration extends JFrame {
 		JButton btnCriar = new JButton("Criar");
 		btnCriar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//		Recuperando os dados do usuário.		//
 				String name = txtName.getText();
 				String cpf = txtCpf.getText();
 				char[] pass = txtPass.getPassword();
 				String passString = (new String(pass));
+				
 				if (!name.isEmpty() && !cpf.isEmpty() && !passString.isEmpty()) {
 					try {
+						//		Fazendo criptografia da senha.		//
 						MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
 						byte messageDigest[] = algorithm.digest(passString.getBytes("UTF-8"));
 						StringBuilder hexString = new StringBuilder();
@@ -120,9 +124,10 @@ public class Registration extends JFrame {
 							hexString.append(String.format("%02X", 0xFF & b));
 						}
 						String hashPass = hexString.toString();
+						
+						//		Criando a conta do usuário.		//
 						BankClient newClient = new BankClient(cpf, name, hashPass);
 						BankClientDAO bankClientDAO = new BankClientDAOImpl(new ConnDB());
-
 						if (bankClientDAO.insertBankClient(newClient)) {
 							Home homeFrame = new Home(newClient);
 							homeFrame.setVisible(true);

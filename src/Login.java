@@ -71,12 +71,15 @@ public class Login extends JFrame {
 		btnLogin.setBounds(271, 203, 89, 23);
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//		Resgatando os dados passados pelo usuário.		//
 				String cpf = txtCpf.getText();
 				char [] pass = txtPass.getPassword();
-				String passString = (new String(pass));				
+				String passString = (new String(pass));
+				
 				if (!cpf.isEmpty() && !passString.isEmpty()) {
 					MessageDigest algorithm;
 					try {
+						//		Fazendo a criptografia da senha.		//
 						algorithm = MessageDigest.getInstance("SHA-256");
 						byte messageDigest[] = algorithm.digest(passString.getBytes("UTF-8"));
 						StringBuilder hexString = new StringBuilder();
@@ -84,15 +87,19 @@ public class Login extends JFrame {
 							hexString.append(String.format("%02X", 0xFF & b));
 						}
 						String hashPass = hexString.toString();
+						
+						//		Validação dos dados.		//
 						BankClientDAO loginClientDAO = new BankClientDAOImpl(new ConnDB());
 						BankClient newClient = loginClientDAO.checkDataClient(cpf, hashPass);
 						if (newClient == null) {
 							JOptionPane.showMessageDialog(null, "Usuário não encontrado!", "Erro", JOptionPane.ERROR_MESSAGE);
 						} else {
+							//		Carregando o "Home.java".		//
 							Home homeFrame = new Home(newClient);
 							homeFrame.setVisible(true);
 							dispose();
 						}
+						
 					} catch (NoSuchAlgorithmException | UnsupportedEncodingException e1) {
 						JOptionPane.showMessageDialog(null, e1.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
 					} 
@@ -118,6 +125,7 @@ public class Login extends JFrame {
 		btnListClients.setBounds(20, 379, 89, 23);
 		btnListClients.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//		Fazendo o redirecionamento para a "Registration.java".		//
 				ListClients listClientsFrame = new ListClients();
 				listClientsFrame.setVisible(true);
 				dispose();
@@ -134,6 +142,7 @@ public class Login extends JFrame {
 		btnRegistration.setBounds(271, 244, 89, 23);
 		btnRegistration.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//		Fazendo o redirecionamento para a "ListClients.java".		//
 				Registration registrationFrame = new Registration();
 				registrationFrame.setVisible(true);
 				dispose();

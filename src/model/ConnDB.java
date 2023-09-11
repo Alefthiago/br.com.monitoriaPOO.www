@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnDB {
-	// banco de dados local
 	private final static String dbUser = "root";
 	private final static String dbPass = "";
 	private final static String dbAddress = "localhost";
@@ -16,6 +15,7 @@ public class ConnDB {
 
 	public Connection getConnection() {
 		try {
+			//		Iniciando a conexão com o banco.		//
 			this.conn = DriverManager.getConnection("jdbc:mysql://" + dbAddress + ":" + dbPort + "/" + dbDatabase, dbUser, dbPass);
 			return this.conn;
 		} catch (SQLException e) {
@@ -27,6 +27,7 @@ public class ConnDB {
 	public void closeConnection() {
 		if (this.conn != null) {
 			try {
+				//		Fechando a conexão com o banco.		// 
 				this.conn.close();
 			} catch (SQLException e) {
 				System.out.println("Houve um erro ao fechar fechar a conexão com o banco de dados!");

@@ -5,7 +5,6 @@ import java.util.Objects;
 import java.util.Random;
 
 public abstract class BankAccount {
-
 	private Integer number;
 	private String type;
 	private String cpfOwner;

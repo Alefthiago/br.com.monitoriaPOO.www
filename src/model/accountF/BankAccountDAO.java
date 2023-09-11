@@ -1,5 +1,5 @@
 package model.accountF;
 
 public interface BankAccountDAO {
-	void addBankAccount(String cpf, String type);
+	void insertBankAccount(String cpf, String type);
 }

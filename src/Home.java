@@ -54,7 +54,7 @@ public class Home extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
+		
 		JLabel lblNewLabel = new JLabel("Bem vinde " + this.user.getName());
 		lblNewLabel.setFont(new Font("Arial Black", Font.PLAIN, 20));
 		lblNewLabel.setBounds(10, 11, 585, 29);
@@ -71,7 +71,7 @@ public class Home extends JFrame {
 				// 		Perguntar para o professor porque é repciso usar chamar o obejto "Home" neste caso.		//
 				BankAccountS newAccountS = new BankAccountS(Home.this.user.getCpf(), "poupança");
 				BankAccountDAOImpl addBankAccountDAO = new BankAccountDAOImpl(new ConnDB());
-				addBankAccountDAO.addAccount(Home.this.user.getCpf(), "poupança");
+				addBankAccountDAO.insertBankAccount(Home.this.user.getCpf(), "poupança");
 				Home.this.user.addAccount(newAccountS);
 				System.out.println(Home.this.user);
 			}

@@ -10,7 +10,7 @@ public class BankAccountDAOImpl {
 		this.conn = conn;
 	}
 	
-	public void addAccount(String cpf, String type) {
+	public void insertBankAccount(String cpf, String type) {
 		
 	}
 }

@@ -52,6 +52,7 @@ public class ListClients extends JFrame {
 		btnBack.setBounds(506, 379, 89, 23);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//		Redirecionamento para "Login.php".		//
 				Login loginFrame = new Login();
 				loginFrame.setVisible(true);
 				dispose();
@@ -63,7 +64,8 @@ public class ListClients extends JFrame {
 		BankClientDAO getList = new BankClientDAOImpl(new ConnDB());
 		cpfList = getList.getClientAllCpf();
 		DefaultListModel<String> dataList = new DefaultListModel<>();
-
+		
+		//		Listando os cpfs do clientes.		//
 		for (String cpf : cpfList) {
 			dataList.addElement(cpf);
 		}
@@ -75,8 +77,8 @@ public class ListClients extends JFrame {
 
 		txtSearch = new JTextField();
 		txtSearch.setBounds(63, 16, 106, 20);
+		//		Input para pesquisa dos clientes.		//
 		txtSearch.getDocument().addDocumentListener(new DocumentListener() {
-
 			@Override
 			public void removeUpdate(DocumentEvent e) {
 				filterList();
@@ -149,7 +151,8 @@ public class ListClients extends JFrame {
 		setLocationRelativeTo(null);
 
 		list.addListSelectionListener(e -> {
-			if (!e.getValueIsAdjusting()) { // Verifica se é uma seleção real, não uma mudança temporária
+			if (!e.getValueIsAdjusting()) { 
+				//		Verifica se é uma seleção real, não uma mudança temporária.		//
 				int i = list.getSelectedIndex();
 				String selectCpf = dataList.get(i);
 				BankClientDAO getDataClient = new BankClientDAOImpl(new ConnDB());
